@@ -1,6 +1,11 @@
 using UTCDateTimes
 using Test
 
+using Dates
+using TimeZones
+
 @testset "UTCDateTimes.jl" begin
-    # Write your tests here.
+    include("traits.jl")
+    include("dates.jl")
+    include("timezones.jl")
 end
