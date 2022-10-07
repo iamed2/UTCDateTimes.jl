@@ -23,3 +23,7 @@ end
 # arithmetic
 Base.:(-)(utcdt::UTCDateTime, zdt::ZonedDateTime) = utcdt.dt - DateTime(zdt, Dates.UTC)
 Base.:(-)(zdt::ZonedDateTime, utcdt::UTCDateTime) = DateTime(zdt, Dates.UTC) - utcdt.dt
+
+function TimeZones.zdt2unix(utcdt::UTCDateTime)
+    TimeZones.datetime2unix(utcdt.dt)
+end

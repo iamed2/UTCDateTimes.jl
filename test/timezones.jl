@@ -53,4 +53,8 @@
         @test !(utcdt < variable_zdt)
         @test utcdt < variable_zdt + Second(1)
     end
+
+    @testset "zdt2unix" begin
+        @test TimeZones.zdt2unix(utcdt) == 1.6460928e9
+    end
 end
