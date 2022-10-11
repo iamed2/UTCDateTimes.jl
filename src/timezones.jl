@@ -23,3 +23,15 @@ end
 # arithmetic
 Base.:(-)(utcdt::UTCDateTime, zdt::ZonedDateTime) = utcdt.dt - DateTime(zdt, Dates.UTC)
 Base.:(-)(zdt::ZonedDateTime, utcdt::UTCDateTime) = DateTime(zdt, Dates.UTC) - utcdt.dt
+
+function TimeZones.zdt2unix(utcdt::UTCDateTime)
+    TimeZones.datetime2unix(utcdt.dt)
+end
+
+function zdt2unix(::Type{T}, utcdt::UTCDateTime) where T<:Integer
+    floor(T, datetime2unix(utcdt.dt))
+end
+
+function zdt2unix(::Type{T}, utcdt::UTCDateTime) where T<:Real
+    convert(T, datetime2unix(utcdt.dt))
+end
