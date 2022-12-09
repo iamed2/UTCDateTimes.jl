@@ -5,6 +5,13 @@ export UTCDateTime
 using Dates
 using TimeZones
 
+function __init__()
+    # same as DateTime minus AMPM
+    Dates.CONVERSION_TRANSLATIONS[UTCDateTime] = (
+        Year, Month, Day, Hour, Minute, Second, Millisecond
+    )
+end
+
 struct UTCDateTime <: Dates.AbstractDateTime
     dt::DateTime
 end
@@ -17,5 +24,6 @@ UTCDateTime(zdt::ZonedDateTime) = UTCDateTime(DateTime(zdt, Dates.UTC))
 
 include("dates.jl")
 include("timezones.jl")
+include("io.jl")
 
 end

@@ -57,3 +57,6 @@ Dates.guess(a::UTCDateTime, b::UTCDateTime, c) = Dates.guess(a.dt, b.dt, c)
 # rounding
 Base.trunc(utcdt::UTCDateTime, t::Type{<:Period}) = UTCDateTime(trunc(utcdt.dt, t))
 Base.floor(utcdt::UTCDateTime, p::Period) = UTCDateTime(floor(utcdt.dt, p))
+
+# parsing/formatting
+Dates.default_format(::Type{UTCDateTime}) = Dates.default_format(DateTime)
