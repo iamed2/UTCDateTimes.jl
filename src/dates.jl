@@ -36,6 +36,10 @@ Base.:(-)(a::UTCDateTime, b::UTCDateTime) = a.dt - b.dt
 Base.:(+)(a::UTCDateTime, p::Period) = UTCDateTime(a.dt + p)
 Base.:(-)(a::UTCDateTime, p::Period) = UTCDateTime(a.dt - p)
 
+# Conversions
+Base.convert(::Type{DateTime}, utcdt::UTCDateTime) = utcdt.dt
+Base.convert(::Type{UTCDateTime}, dt::DateTime) = UTCDateTime(dt)
+
 # ranges
 ## I don't like this but it appears to be the best way to get length of ranges to work
 ## See https://github.com/JuliaLang/julia/blob/75e2402f3353cfaa5fa71336c7350714cb61c538/stdlib/Dates/src/ranges.jl#L10
