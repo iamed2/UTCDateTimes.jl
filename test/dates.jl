@@ -59,6 +59,11 @@
         @test yearmonthday(expected) == (uyear, umonth, uday)
     end
 
+    @testset "Conversions" begin
+        @test convert(UTCDateTime, dt) == utcdt
+        @test convert(DateTime, utcdt) == dt
+    end
+
     @testset "Comparisons and arithmetic" begin
         @test utcdt - utcdt == Millisecond(0)
         @test utcdt + Day(1) ==

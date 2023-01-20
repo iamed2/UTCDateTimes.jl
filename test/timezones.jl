@@ -9,6 +9,9 @@
         @test UTCDateTime(utc_zdt) === utcdt
         @test UTCDateTime(fixed_zdt) === utcdt
         @test UTCDateTime(variable_zdt) === utcdt
+        @test convert(UTCDateTime, utc_zdt) == utcdt
+        @test convert(UTCDateTime, fixed_zdt) === utcdt
+        @test convert(UTCDateTime, variable_zdt) === utcdt
     end
 
     @testset "Convert to ZonedDateTime" begin
@@ -23,6 +26,7 @@
         @test new_utc_zdt3 === utc_zdt
         @test new_fixed_zdt === fixed_zdt
         @test new_variable_zdt === variable_zdt
+        @test convert(ZonedDateTime, utcdt) === utc_zdt
 
         @test_throws ArgumentError ZonedDateTime(utcdt, tz"UTC"; from_utc=false)
     end

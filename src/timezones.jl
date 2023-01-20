@@ -24,6 +24,10 @@ end
 Base.:(-)(utcdt::UTCDateTime, zdt::ZonedDateTime) = utcdt.dt - DateTime(zdt, Dates.UTC)
 Base.:(-)(zdt::ZonedDateTime, utcdt::UTCDateTime) = DateTime(zdt, Dates.UTC) - utcdt.dt
 
+# Conversions between zdt and utcdt
+Base.convert(::Type{ZonedDateTime}, utcdt::UTCDateTime) = ZonedDateTime(utcdt)
+Base.convert(::Type{UTCDateTime}, zdt::ZonedDateTime) = UTCDateTime(zdt)
+
 function TimeZones.zdt2unix(utcdt::UTCDateTime)
     TimeZones.datetime2unix(utcdt.dt)
 end
