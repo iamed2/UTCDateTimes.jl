@@ -56,6 +56,9 @@
         @test !(utcdt < fixed_zdt)
         @test !(utcdt < variable_zdt)
         @test utcdt < variable_zdt + Second(1)
+
+        @test hash(utcdt) == hash(utc_zdt)
+        @test intersect([utc_zdt], [utcdt]) == [utc_zdt]
     end
 
     @testset "zdt2unix" begin
