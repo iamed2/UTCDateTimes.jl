@@ -54,6 +54,15 @@
         @test second(expected) == usecond
         @test millisecond(expected) == umillisecond
 
+        @test Year(expected) == Year(uyear)
+        @test Quarter(expected) == Quarter(1)
+        @test Month(expected) == Month(umonth)
+        @test Week(expected) == Week(9)
+        @test Day(expected) == Day(uday)
+        @test Hour(expected) == Hour(uhour)
+        @test Minute(expected) == Minute(uminute)
+        @test Second(expected) == Second(usecond)
+
         @test yearmonth(expected) == (uyear, umonth)
         @test monthday(expected) == (umonth, uday)
         @test yearmonthday(expected) == (uyear, umonth, uday)
