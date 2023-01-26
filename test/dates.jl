@@ -62,6 +62,7 @@
         @test Hour(expected) == Hour(uhour)
         @test Minute(expected) == Minute(uminute)
         @test Second(expected) == Second(usecond)
+        @test Millisecond(expected) == Millisecond(umillisecond)
 
         @test yearmonth(expected) == (uyear, umonth)
         @test monthday(expected) == (umonth, uday)
