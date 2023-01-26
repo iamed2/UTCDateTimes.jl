@@ -56,6 +56,9 @@
         @test !(utcdt < fixed_zdt)
         @test !(utcdt < variable_zdt)
         @test utcdt < variable_zdt + Second(1)
+
+        @test hash(utcdt) == hash(utc_zdt)
+        @test utcdt in Set([utc_zdt])
     end
 
     @testset "zdt2unix" begin

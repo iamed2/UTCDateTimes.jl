@@ -20,6 +20,19 @@ function Base.isless(zdt::ZonedDateTime, utcdt::UTCDateTime)
     return isless(DateTime(zdt, Dates.UTC), utcdt.dt)
 end
 
+"""
+    hash(::UTCDateTime, h)
+
+Compute an integer hash code for a UTCDateTime by hashing the `dt` field.
+`hash(:utc_instant, h)` is used to intentionally hash equivalent
+`UTCDateTimes` and `ZonedDateTimes` to the same value.
+"""
+function Base.hash(utcdt::UTCDateTime, h::UInt)
+    h = hash(:utc_instant, h)
+    h = hash(utcdt.dt, h)
+    return h
+end
+
 # arithmetic
 Base.:(-)(utcdt::UTCDateTime, zdt::ZonedDateTime) = utcdt.dt - DateTime(zdt, Dates.UTC)
 Base.:(-)(zdt::ZonedDateTime, utcdt::UTCDateTime) = DateTime(zdt, Dates.UTC) - utcdt.dt
