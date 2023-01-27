@@ -45,10 +45,10 @@ function TimeZones.zdt2unix(utcdt::UTCDateTime)
     TimeZones.datetime2unix(utcdt.dt)
 end
 
-function zdt2unix(::Type{T}, utcdt::UTCDateTime) where T<:Integer
+function TimeZones.zdt2unix(::Type{T}, utcdt::UTCDateTime) where T<:Integer
     floor(T, datetime2unix(utcdt.dt))
 end
 
-function zdt2unix(::Type{T}, utcdt::UTCDateTime) where T<:Real
+function TimeZones.zdt2unix(::Type{T}, utcdt::UTCDateTime) where T<:Real
     convert(T, datetime2unix(utcdt.dt))
 end
