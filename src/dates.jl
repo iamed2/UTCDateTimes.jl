@@ -60,3 +60,5 @@ Base.floor(utcdt::UTCDateTime, p::Period) = UTCDateTime(floor(utcdt.dt, p))
 
 # parsing/formatting
 Dates.default_format(::Type{UTCDateTime}) = Dates.default_format(DateTime)
+# Note: The `validargs` function is as part of the Dates parsing interface.
+Dates.validargs(::Type{UTCDateTime}, args...) = Dates.validargs(DateTime, args...)
