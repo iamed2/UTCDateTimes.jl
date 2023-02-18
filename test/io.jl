@@ -28,10 +28,12 @@
     @testset "parsing" begin
         @testset for (str, utcdt) in parse_tests
             @test parse(UTCDateTime, str) == utcdt
+            @test tryparse(UTCDateTime, str) == utcdt
         end
 
         @testset for (str, utcdt) in parse_tests
             @test parse(UTCDateTime, str, format) == utcdt
+            @test tryparse(UTCDateTime, str, format) == utcdt
         end
     end
 
