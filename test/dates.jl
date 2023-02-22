@@ -17,6 +17,7 @@
         @test utcdt == expected
         @test Date(utcdt) == date
         @test Time(utcdt) == time
+        @test DateTime(utcdt) == dt
         @test UTCDateTime(uyear, umonth, uday, uhour, uminute, usecond, umillisecond) ==
             expected
         @test Date(UTCDateTime(uyear, umonth, uday)) == date
