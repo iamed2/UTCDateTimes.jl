@@ -1,6 +1,6 @@
 module UTCDateTimes
 
-export UTCDateTime, unix2utc
+export UTCDateTime
 
 using Dates
 using TimeZones
@@ -22,13 +22,14 @@ UTCDateTime(d::Date, t::Time) = UTCDateTime(DateTime(d, t))
 
 UTCDateTime(zdt::ZonedDateTime) = UTCDateTime(DateTime(zdt, Dates.UTC))
 
+# This was briefly exported as unix2utc; deprecation changing exported state is a challenge
 """
-    unix2utc(x) -> DateTime
+    unix2utcdt(x) -> DateTime
 
 Take the number of seconds since unix epoch `1970-01-01T00:00:00` and convert to the
 corresponding `UTCDateTime`.
 """
-unix2utc(x) = UTCDateTime(unix2datetime(x))
+unix2utcdt(x) = UTCDateTime(unix2datetime(x))
 
 include("dates.jl")
 include("timezones.jl")
