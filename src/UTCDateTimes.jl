@@ -1,6 +1,6 @@
 module UTCDateTimes
 
-export UTCDateTime, unix2utcdt
+export UTCDateTime
 
 using Dates
 using TimeZones
@@ -22,6 +22,7 @@ UTCDateTime(d::Date, t::Time) = UTCDateTime(DateTime(d, t))
 
 UTCDateTime(zdt::ZonedDateTime) = UTCDateTime(DateTime(zdt, Dates.UTC))
 
+# This was briefly exported as unix2utc; deprecation changing exported state is a challenge
 """
     unix2utcdt(x) -> DateTime
 

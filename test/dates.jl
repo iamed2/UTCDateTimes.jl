@@ -75,7 +75,7 @@
         @test convert(DateTime, utcdt) == dt
 
         timestamp = datetime2unix(DateTime(2020, 02, 02))
-        @test unix2utcdt(timestamp) == UTCDateTime(2020, 02, 02)
+        @test UTCDateTimes.unix2utcdt(timestamp) == UTCDateTime(2020, 02, 02)
     end
 
     @testset "Comparisons and arithmetic" begin
