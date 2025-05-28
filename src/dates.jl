@@ -1,4 +1,4 @@
-DateTime(utcdt::UTCDateTime) = utcdt.dt
+Dates.DateTime(utcdt::UTCDateTime) = utcdt.dt
 
 const delegated = [
     :days,
